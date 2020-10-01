@@ -39,11 +39,11 @@ end
 
 
 def best_under_6000
-    cool = @hash_array.reject! {|keys,value| value.to_i > 6000.00 }
-    ok = cool.max_by{|keys,value| value.to_i}
-    puts "La plus grosse valeur sous les 6000 c'est #{ok[0]} #{ok[1]} "
-    
-puts 
+    best_under_6000 = @hash_array
+    best_under_6000.reject!{|keys,value| value.to_i > 6000.00 }
+    ok = best_under_6000.max_by{|keys,value| value.to_i}
+    puts "La plus grosse valeur sous les 6000 c'est #{ok} "
+
 end
 
 def start 
