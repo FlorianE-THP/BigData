@@ -8,26 +8,25 @@
 
 
 
-@hash_array = {}
-@keys.each_with_index do |value, index|
-  @hash_array[value] = @value[index]
-end
+#@hash_array = {}
+#@keys.each_with_index do |value, index|
+# @hash_array[value] = @value[index]
+#end
 
-
+@value.map!{ |x| x.to_f }
+@hash_array = Hash[@keys.zip(@value)]
 
 
 def biggest_value 
-  max_value = @hash_array.max_by{|keys, value| value.to_i}
-  puts "La plus grosse valeur, c'est #{max_value[0]} => #{max_value[1]}"
+  max_value = @hash_array.group_by{|k, v| v}.max_by{|k, v| k}.last.to_h
+  puts "La plus grosse valeur c'est #{max_value}"
 end
 
 
 
 def smaller_value 
-    min_keys = @hash_array.select{|keys,value| value == @hash_array.values.min}
-    min_keys.each do |keys, value|
-        puts "La plus petite valeur, c'est " + keys + " => " + value
-    end
+    min_value = @hash_array.group_by{|k, v| v}.min_by{|k, v| k}.last.to_h
+    puts "Les plus petites valeurs c'est #{min_value}"
 end
 
 
