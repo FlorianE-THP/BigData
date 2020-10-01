@@ -17,18 +17,14 @@ end
 
 
 def biggest_value 
-    biggest_value = @hash_array.values.max
-    max_keys = @hash_array.select{|keys,value| value == biggest_value}
-    max_keys.each do |keys, value|
-        puts "La plus grosse valeur, c'est " + keys + " => " + value
-    end
+  max_value = @hash_array.max_by{|keys, value| value.to_i}
+  puts "La plus grosse valeur, c'est #{max_value[0]} => #{max_value[1]}"
 end
 
 
 
 def smaller_value 
-    smaller_value = @hash_array.values.min
-    min_keys = @hash_array.select{|keys,value| value == smaller_value}
+    min_keys = @hash_array.select{|keys,value| value == @hash_array.values.min}
     min_keys.each do |keys, value|
         puts "La plus petite valeur, c'est " + keys + " => " + value
     end
@@ -101,6 +97,7 @@ puts "
       gets.chomp
       start
     else 
+
       puts "Euh.. j'ai pas encore codé ça.."
       puts " "
       puts "Pour relancer une partie : Appuie sur ENTREE"
